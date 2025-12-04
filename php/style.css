@@ -126,9 +126,44 @@ header p {
     background-color: #e53935;
 }
 
+
+
 footer {
     text-align: center;
     margin-top: 40px;
     font-size: 14px;
     color: #777;
+}
+
+/* Login & Register Page Styles */
+body.auth-page {
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.login-container,
+.register-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 350px;
+}
+
+.login-header h2,
+.register-header h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 24px;
+}
+
+.login-container .form-control,
+.register-container .form-control {
+    margin-bottom: 15px;
 }

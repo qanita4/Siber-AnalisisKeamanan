@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Edit Student</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -9,11 +12,20 @@
     <div class="container mt-5">
         <h1>Edit Student</h1>
         <form method="POST">
-            <input type="text" name="name" value="{{ student.name }}" required>
-            <input type="number" name="age" value="{{ student.age }}" required>
-            <input type="text" name="grade" value="{{ student.grade }}" required>
+            <input type="text" name="name" value="{{ student.name|e }}" required>
+            <input type="number" name="age" value="{{ student.age|e }}" required>
+            <input type="text" name="grade" value="{{ student.grade|e }}" required>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
+    
+    <script>
+        // Force reload when accessed via back button
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        };
+    </script>
 </body>
 </html>
