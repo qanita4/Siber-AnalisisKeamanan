@@ -1,0 +1,67 @@
+/* Login & Register Page Styles */
+body.auth-page {
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.login-container,
+.register-container,
+.registrasi-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 350px;
+}
+
+.login-header h2,
+.register-header h2,
+.registrasi-header h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 24px;
+}
+
+.login-container .form-control,
+.register-container .form-control,
+.registrasi-container .form-control {
+    margin-bottom: 15px;
+}
+
+/* Password Strength Indicator */
+.strength-bar {
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strength-meter {
+    height: 100%;
+    width: 0%;
+    background: #d9534f;
+    transition: width 0.2s ease, background-color 0.2s ease;
+}
+
+.strength-meter.weak {
+    background: #d9534f;
+}
+
+.strength-meter.medium {
+    background: #f0ad4e;
+}
+
+.strength-meter.strong {
+    background: #5cb85c;
+}
+
+#submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

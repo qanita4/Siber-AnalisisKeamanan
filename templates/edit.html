@@ -9,9 +9,9 @@
     <div class="container mt-5">
         <h1>Edit Student</h1>
         <form method="POST">
-            <input type="text" name="name" value="{{ student.name }}" required>
-            <input type="number" name="age" value="{{ student.age }}" required>
-            <input type="text" name="grade" value="{{ student.grade }}" required>
+            <input type="text" name="name" value="{{ student.name |e }}" required>
+            <input type="number" name="age" value="{{ student.age |e }}" required>
+            <input type="text" name="grade" value="{{ student.grade |e }}" required>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

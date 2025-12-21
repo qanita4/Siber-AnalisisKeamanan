@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Students</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
     <div class="container mt-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Students</h1>
-        <form action="/add" method="POST">
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="number" name="age" placeholder="Age" required>
-            <input type="text" name="grade" placeholder="Grade" required>
-            <button type="submit" class="btn btn-primary">Add Student</button>
-        </form>
-        <table class="table mt-3">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Grade</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for student in students %}
-                <tr>
-                    <td>{{ student.name|safe }}</td>
-                    <td>{{ student.age }}</td>
-                    <td>{{ student.grade }}</td>
-                    <td>
-                        <a href="/edit/{{ student.id }}" class="btn btn-warning">Edit</a>
-                        <a href="/delete/{{ student.id }}" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div>
+          {% if session.username %}
+          <span class="mr-2">Welcome, {{ session.username }}</span>
+          <a href="{{ url_for('logout') }}" class="btn btn-outline-secondary"
+            >Logout</a
+          >
+          {% else %}
+          <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+          <a href="{{ url_for('register') }}" class="btn btn-link">Register</a>
+          {% endif %}
+        </div>
+      </div>
+      <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="number" name="age" placeholder="Age" min="1" max="110" required />
+        <input type="text" name="grade" placeholder="Grade" min="1" maxlength="10" required />
+        <button type="submit" class="btn btn-primary">Add Student</button>
+      </form>
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for student in students %}
+          <tr>
+            <td>{{ student.name|e }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.grade }}</td>
+            <td>
+              <a href="/edit/{{ student.id }}" class="btn btn-warning">Edit</a>
+              <a href="/delete/{{ student.id }}" class="btn btn-danger"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-</body>
+  </body>
 </html>
